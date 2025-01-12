@@ -1,0 +1,18 @@
+/* src/styles.scss */
+
+/* Import global */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Optionnel : Polices spécifiques pour les titres */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600; /* Titres plus gras */
+}
+
+p {
+  font-weight: 300; /* Texte courant plus léger */
+}

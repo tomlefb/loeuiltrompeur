@@ -1,0 +1,64 @@
+@use '../../../assets/styles/variables.module' as variables;
+
+footer {
+  padding: 1rem;
+  background-color: #f9f9f9; // Couleur de fond douce
+  font-size: 0.9rem;
+  color: #5d5c59; // Texte gris
+
+  display: flex;
+  flex-direction: column; // Par défaut, les éléments sont empilés (mobile-friendly)
+  align-items: center;
+
+  .container-legals {
+    display: flex;
+    flex-wrap: wrap; // Permet de passer à la ligne si nécessaire (mobile)
+    gap: 0.5rem;
+    justify-content: center;
+    text-align: center;
+
+    a {
+      text-decoration: none;
+      color: #5d5c59;
+
+      &:hover {
+        color: #687a69; // Vert principal au survol
+      }
+    }
+
+    .separator {
+      color: #5d5c59;
+    }
+  }
+
+  .container-socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    .social-logo {
+      width: 32px;
+      height: 32px;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1); // Agrandissement au survol
+      }
+    }
+  }
+
+  // Styles pour PC (desktop)
+  @media (min-width: 1024px) {
+    flex-direction: row; // Les éléments s'alignent sur une seule ligne
+    justify-content: space-between;
+
+    .container-socials {
+      margin-top: 0; // Supprime l'espacement entre les légaux et les réseaux sociaux
+    }
+
+    .container-legals {
+      justify-content: flex-start; // Alignement à gauche
+    }
+  }
+}
+

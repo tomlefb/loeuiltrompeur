@@ -1,0 +1,63 @@
+/* Variables SCSS */
+$background-color: #e9e7de;  /* Couleur de fond */
+$text-color: #000000;        /* Couleur principale du texte */
+$secondary-color: #687a69;   /* Vert du logo */
+
+/* Mise en page principale */
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+}
+
+header, footer {
+  background-color: $secondary-color;
+  color: white;
+  text-align: center;
+  padding: 10px 20px;
+}
+
+/* Conteneur principal pour les pages */
+.main-container {
+  padding: 20px;
+  min-height: calc(100vh - 140px); /* Ajuste selon la taille du header/footer */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsivité */
+@media (max-width: 768px) {
+  header, footer {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  .main-container {
+    padding: 10px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1200px) {
+  header, footer {
+    font-size: 16px;
+    padding: 10px 15px;
+  }
+
+  .main-container {
+    padding: 15px;
+  }
+}
+
+@media (min-width: 1201px) {
+  header, footer {
+    font-size: 18px;
+    padding: 20px 30px;
+  }
+
+  .main-container {
+    padding: 20px;
+  }
+}
