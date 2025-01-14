@@ -1,0 +1,70 @@
+@use '../../../assets/styles/variables.module' as variables;
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; // Empêche le défilement
+}
+
+.home-container {
+  position: absolute; // Changé de fixed à absolute
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%; // Utilise toute la hauteur disponible
+  background: url('../../../assets/images/restaurant/1quali.jpeg') no-repeat center center;
+  background-size: cover;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); // Overlay pour améliorer la lisibilité
+    z-index: 1;
+  }
+
+  .slogan {
+    position: relative;
+    z-index: 2;
+    font-family: 'Dancing Script', cursive; // Police identique au header
+    font-size: 3rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 1.5rem; // Espace entre le slogan et le bouton
+    text-align: center;
+    padding: 0 1rem; // Ajoute une marge intérieure horizontale
+
+    @media (max-width: 768px) {
+      font-size: 1.8rem; // Réduit la taille de la police sur mobile
+    }
+  }
+
+  .enter-button {
+    position: relative;
+    z-index: 3; // Au-dessus de l'overlay
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: white;
+    background-color: variables.$secondary-color;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+
+    &:hover {
+      background-color: variables.$main-color;
+      transform: scale(1.1);
+    }
+  }
+}

@@ -2,9 +2,9 @@
 
 header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  justify-content: space-between;
+  padding: 1rem 2rem; // Augmente le padding vertical pour équilibrer l'espace
   background-color: variables.$main-color;
   color: white;
   position: fixed;
@@ -13,24 +13,34 @@ header {
   left: 0;
   z-index: 1000;
   box-sizing: border-box;
+  height: 70px;
 
-  .logo img {
-    height: 50px;
-    width: auto;
+  .logo {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: flex-start;
+
+    img {
+      height: 60px;
+      width: auto;
+      margin: auto 0; // Centre verticalement le logo
+    }
   }
 
   .restaurant-name {
-    font-family: 'Dancing Script', cursive; /* Belle police manuscrite */
+    font-family: 'Dancing Script', cursive;
     font-size: 1.8rem;
     font-weight: 600;
     color: white;
     text-align: center;
-    flex-grow: 1;
-    padding: 0 1rem;
-    white-space: nowrap; /* Empêche le texte de passer à la ligne */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
   }
 
   .navigation {
+    flex: 0 0 auto;
     ul {
       display: flex;
       gap: 2rem;
@@ -49,6 +59,25 @@ header {
         }
       }
     }
+
+    @media (max-width: 768px) {
+      display: none; // Cache le menu par défaut sur mobile
+    }
+
+    &.active {
+      display: block; // Affiche le menu lorsqu'il est actif
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background-color: variables.$main-color;
+      border-radius: 0 0 10px 10px;
+      padding: 1rem;
+
+      ul {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
   }
 
   .menu-toggle {
@@ -65,32 +94,21 @@ header {
         height: 3px;
         background-color: white;
         border-radius: 2px;
+        transition: transform 0.3s ease;
       }
     }
   }
 
-  @media (max-width: 768px) {
+  // Ajustements pour les écrans intermédiaires
+  @media (max-width: 1024px) and (min-width: 769px) {
     .restaurant-name {
-      font-size: 1.5rem; /* Réduit la taille sur mobile */
+      font-size: 1.5rem;
+      left: 45%;
+      transform: translateX(-45%);
     }
 
-    .navigation {
-      display: none;
-
-      &.active {
-        display: block;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background-color: variables.$main-color;
-        padding: 1rem;
-        border-radius: 0 0 10px 10px;
-
-        ul {
-          flex-direction: column;
-          gap: 1rem;
-        }
-      }
+    .navigation ul {
+      gap: 1.5rem;
     }
   }
 }

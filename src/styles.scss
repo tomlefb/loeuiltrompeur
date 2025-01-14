@@ -16,3 +16,22 @@ h1, h2, h3, h4, h5, h6 {
 p {
   font-weight: 300; /* Texte courant plus léger */
 }
+
+html, body {
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+main {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}

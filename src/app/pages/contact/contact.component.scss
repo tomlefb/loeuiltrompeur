@@ -1,0 +1,88 @@
+@use '../../../assets/styles/variables.module' as variables;
+
+.contact-container {
+  display: flex;
+  padding: 3rem;
+  gap: 3rem; // Augmenté l'espacement
+  justify-content: center;
+  align-items: stretch;
+  margin: 0 auto;
+  max-width: 1400px; // Augmenté la largeur maximale
+  background-color: #f9f9f9; // Même couleur que le footer
+
+  .map-container {
+    flex: 1; // Les deux conteneurs auront la même taille
+    min-height: 100%;
+    display: flex;
+    min-width: 500px; // Assure une largeur minimale
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      flex: 1;
+    }
+  }
+
+  .info-container {
+    flex: 1; // Les deux conteneurs auront la même taille
+    background: white;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    min-width: 500px; // Assure une largeur minimale
+
+    h2 {
+      color: variables.$main-color;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      font-family: 'Poppins', sans-serif;
+
+      &:not(:first-child) {
+        margin-top: 2rem;
+      }
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 0.8rem;
+        color: #5d5c59;
+      }
+    }
+
+    p {
+      color: #5d5c59;
+      margin: 0;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    padding: 2rem;
+
+    .map-container,
+    .info-container {
+      min-width: auto; // Retire la largeur minimale en responsive
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 1rem;
+
+    .map-container {
+      width: 100%;
+      height: 300px;
+    }
+
+    .info-container {
+      width: 100%;
+      padding: 1.5rem;
+
+    }
+  }
+}

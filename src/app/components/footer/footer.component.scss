@@ -1,19 +1,19 @@
 @use '../../../assets/styles/variables.module' as variables;
 
 footer {
-  padding: 1rem;
-  background-color: #f9f9f9; // Couleur de fond douce
-  font-size: 0.9rem;
-  color: #5d5c59; // Texte gris
-
+  padding: 0.5rem; // Réduction du padding pour diminuer la hauteur
+  background-color: #f9f9f9;
+  font-size: 0.8rem; // Réduction de la taille de police
+  color: #5d5c59;
   display: flex;
-  flex-direction: column; // Par défaut, les éléments sont empilés (mobile-friendly)
+  flex-direction: column;
   align-items: center;
+  min-height: 40px; // Hauteur minimum plus réduite
 
   .container-legals {
     display: flex;
-    flex-wrap: wrap; // Permet de passer à la ligne si nécessaire (mobile)
-    gap: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.3rem; // Réduction de l’espace entre les éléments
     justify-content: center;
     text-align: center;
 
@@ -22,7 +22,7 @@ footer {
       color: #5d5c59;
 
       &:hover {
-        color: #687a69; // Vert principal au survol
+        color: #687a69;
       }
     }
 
@@ -33,32 +33,37 @@ footer {
 
   .container-socials {
     display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
+    gap: 0.8rem; // Réduction de l’espace entre les icônes
+    margin-top: 0.3rem; // Réduction de la marge supérieure
 
-    .social-logo {
-      width: 32px;
-      height: 32px;
-      transition: transform 0.3s ease;
+    i {
+      font-size: 10px; // Réduction de la taille des icônes
+      color: #5d5c59;
+      cursor: pointer;
+      transition: transform 0.3s ease, color 0.3s ease;
 
       &:hover {
-        transform: scale(1.1); // Agrandissement au survol
+        transform: scale(1.1);
+        color: #687a69;
       }
     }
   }
 
-  // Styles pour PC (desktop)
   @media (min-width: 1024px) {
-    flex-direction: row; // Les éléments s'alignent sur une seule ligne
+    padding: 0.8rem; // Ajustement léger du padding sur desktop
+    flex-direction: row;
     justify-content: space-between;
 
     .container-socials {
-      margin-top: 0; // Supprime l'espacement entre les légaux et les réseaux sociaux
+      margin-top: 0;
+      i {
+        font-size: 24px; // Taille normale des icônes sur desktop
+      }
     }
 
     .container-legals {
-      justify-content: flex-start; // Alignement à gauche
+      font-size: 0.9rem; // Retour à une taille normale pour les légaux
+      justify-content: flex-start;
     }
   }
 }
-
