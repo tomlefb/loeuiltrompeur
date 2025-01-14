@@ -1,0 +1,96 @@
+@use '../../../assets/styles/variables.module' as variables;
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: variables.$main-color;
+  color: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+
+  .logo img {
+    height: 50px;
+    width: auto;
+  }
+
+  .restaurant-name {
+    font-family: 'Dancing Script', cursive; /* Belle police manuscrite */
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    flex-grow: 1;
+    padding: 0 1rem;
+    white-space: nowrap; /* Empêche le texte de passer à la ligne */
+  }
+
+  .navigation {
+    ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li a {
+        text-decoration: none;
+        color: white;
+        font-weight: 500;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: variables.$secondary-color;
+        }
+      }
+    }
+  }
+
+  .menu-toggle {
+    display: none;
+
+    @media (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      cursor: pointer;
+
+      span {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        border-radius: 2px;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .restaurant-name {
+      font-size: 1.5rem; /* Réduit la taille sur mobile */
+    }
+
+    .navigation {
+      display: none;
+
+      &.active {
+        display: block;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: variables.$main-color;
+        padding: 1rem;
+        border-radius: 0 0 10px 10px;
+
+        ul {
+          flex-direction: column;
+          gap: 1rem;
+        }
+      }
+    }
+  }
+}
