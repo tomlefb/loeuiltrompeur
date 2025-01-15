@@ -1,0 +1,53 @@
+@use '../../../assets/styles/variables.module' as variables;
+
+.about-section {
+  background-color: #e9e7de;
+  padding: 2rem;
+}
+
+.about-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  img {
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .about-text {
+    padding: 2rem;
+    width: 50%;
+    color: #5d5c59;
+
+    h2 {
+      color: #719884;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+  }
+
+  &.reverse {
+    flex-direction: row-reverse;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-row {
+    flex-direction: column;
+
+    img, .about-text {
+      width: 100%;
+      padding: 1rem;
+    }
+
+    &.reverse {
+      flex-direction: column;
+    }
+  }
+}
