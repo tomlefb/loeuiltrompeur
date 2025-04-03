@@ -1,53 +1,234 @@
 @use '../../../assets/styles/variables.module' as variables;
 
-.about-section {
-  background-color: #e9e7de;
-  padding: 2rem;
+// Variables
+$primary-color: #687a69;
+$secondary-color: #e9e7de;
+$accent-color: #a86d37;
+$text-color: #5d5c59;
+$transition-time: 0.5s;
+
+.about-container {
+  padding: 4rem 2rem;
+  background-color: $secondary-color;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
-.about-row {
-  display: flex;
-  align-items: center;
-  margin-bottom: 2rem;
+.about-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  padding: 0 1rem;
 
-  img {
-    width: 50%;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: $primary-color;
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 50%;
+      height: 2px;
+      background-color: $accent-color;
+      bottom: -10px;
+      left: 25%;
+    }
   }
 
-  .about-text {
-    padding: 2rem;
-    width: 50%;
-    color: #5d5c59;
+  .tagline {
+    font-size: 1.2rem;
+    color: $text-color;
+    font-style: italic;
+    margin-top: 1.5rem;
+  }
+}
 
-    h2 {
-      color: #719884;
-      margin-bottom: 1rem;
-    }
+.about-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+  margin-bottom: 4rem;
+}
 
-    p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-    }
+.about-card {
+  display: flex;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity $transition-time ease, transform $transition-time ease;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: white;
+
+  &.animate {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   &.reverse {
     flex-direction: row-reverse;
+
+    .card-content {
+      padding-left: 1rem;
+      padding-right: 3rem;
+    }
+  }
+
+  .card-image {
+    flex: 1;
+    overflow: hidden;
+    height: 400px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .card-content {
+    flex: 1;
+    padding: 3rem;
+
+    h2 {
+      color: $primary-color;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        width: 40px;
+        height: 3px;
+        background-color: $accent-color;
+        bottom: -10px;
+        left: 0;
+      }
+    }
+
+    p {
+      color: $text-color;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .btn-discover {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background-color: $primary-color;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: 500;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+}
+
+.about-quote {
+  text-align: center;
+  padding: 4rem 2rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity $transition-time ease, transform $transition-time ease;
+
+  &.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  blockquote {
+    font-size: 1.6rem;
+    font-style: italic;
+    color: $primary-color;
+    line-height: 1.6;
+    position: relative;
+
+    &::before, &::after {
+      content: '"';
+      font-size: 4rem;
+      color: rgba($primary-color, 0.2);
+      position: absolute;
+    }
+
+    &::before {
+      top: -20px;
+      left: -20px;
+    }
+
+    &::after {
+      bottom: -40px;
+      right: -20px;
+    }
+  }
+
+  cite {
+    display: block;
+    margin-top: 1.5rem;
+    font-style: normal;
+    color: $text-color;
+  }
+}
+
+// Responsive
+@media (max-width: 992px) {
+  .about-card {
+    flex-direction: column;
+
+    &.reverse {
+      flex-direction: column;
+
+      .card-content {
+        padding: 2rem;
+      }
+    }
+
+    .card-image, .card-content {
+      width: 100%;
+    }
+
+    .card-image {
+      height: 300px;
+    }
+
+    .card-content {
+      padding: 2rem;
+    }
   }
 }
 
 @media (max-width: 768px) {
-  .about-row {
-    flex-direction: column;
+  .about-header h1 {
+    font-size: 2rem;
+  }
 
-    img, .about-text {
-      width: 100%;
-      padding: 1rem;
-    }
+  .about-cards {
+    gap: 3rem;
+  }
 
-    &.reverse {
-      flex-direction: column;
+  .about-quote blockquote {
+    font-size: 1.3rem;
+
+    &::before, &::after {
+      font-size: 3rem;
     }
   }
 }
