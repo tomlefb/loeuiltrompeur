@@ -4,89 +4,88 @@
 $primary-color: #687a69;
 $secondary-color: #e9e7de;
 $accent-color: #a86d37;
-$text-color: #5d5c59;
-$transition-time: 0.5s;
+$text-dark: #5d5c59;
+$text-light: #ffffff;
+$transition-duration: 0.5s;
 
-.about-container {
-  padding: 4rem 2rem;
+.about-section {
   background-color: $secondary-color;
-  min-height: 100vh;
-  overflow: hidden;
-}
-
-.about-header {
-  text-align: center;
-  margin-bottom: 4rem;
-  padding: 0 1rem;
-
-  h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    color: $primary-color;
-    position: relative;
-    display: inline-block;
-
-    &::after {
-      content: '';
-      position: absolute;
-      width: 50%;
-      height: 2px;
-      background-color: $accent-color;
-      bottom: -10px;
-      left: 25%;
-    }
-  }
-
-  .tagline {
-    font-size: 1.2rem;
-    color: $text-color;
-    font-style: italic;
-    margin-top: 1.5rem;
-  }
-}
-
-.about-cards {
+  padding: 0;
+  min-height: 85vh;
   display: flex;
   flex-direction: column;
-  gap: 6rem;
-  margin-bottom: 4rem;
+  align-items: center;
+  width: 100vw;
+  max-width: 100%;
+  margin: 0;
 }
 
-.about-card {
-  display: flex;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: opacity $transition-time ease, transform $transition-time ease;
-  align-items: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  border-radius: 15px;
+.section-title {
+  color: $primary-color;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  position: relative;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background-color: $accent-color;
+    margin: 0.5rem auto 0;
+  }
+}
+
+// Carousel Container
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
   overflow: hidden;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+// Slides
+.carousel-slides {
+  display: flex;
+  width: 100%;
+  height: 85vh;
+  min-height: 700px;
+  position: relative;
+}
+
+.carousel-slide {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity $transition-duration ease, transform $transition-duration ease;
+  transform: translateX(100%);
   background-color: white;
 
-  &.animate {
+  &.active {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
+    z-index: 1;
   }
 
-  &.reverse {
-    flex-direction: row-reverse;
-
-    .card-content {
-      padding-left: 1rem;
-      padding-right: 3rem;
-    }
-  }
-
-  .card-image {
+  .slide-image {
     flex: 1;
     overflow: hidden;
-    height: 400px;
 
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      object-position: center;
+      transition: transform 0.7s ease;
 
       &:hover {
         transform: scale(1.05);
@@ -94,141 +93,249 @@ $transition-time: 0.5s;
     }
   }
 
-  .card-content {
+  .slide-content {
     flex: 1;
-    padding: 3rem;
+    padding: 4rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     h2 {
       color: $primary-color;
-      font-size: 1.8rem;
-      margin-bottom: 1.5rem;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
       position: relative;
 
-      &::before {
+      &::after {
         content: '';
         position: absolute;
-        width: 40px;
+        left: 0;
+        bottom: -10px;
+        width: 50px;
         height: 3px;
         background-color: $accent-color;
-        bottom: -10px;
-        left: 0;
       }
     }
 
     p {
-      color: $text-color;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       line-height: 1.8;
-      margin-bottom: 2rem;
+      color: $text-dark;
+      margin-bottom: 3rem;
     }
 
-    .btn-discover {
-      display: inline-block;
-      padding: 0.8rem 1.5rem;
+    .btn-reservation {
+      align-self: flex-start;
       background-color: $primary-color;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: 500;
-      transition: background-color 0.3s ease, transform 0.3s ease;
+      color: $text-light;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
 
       &:hover {
         background-color: darken($primary-color, 10%);
         transform: translateY(-3px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
       }
     }
   }
 }
 
-.about-quote {
-  text-align: center;
-  padding: 4rem 2rem;
-  margin: 2rem auto;
-  max-width: 800px;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity $transition-time ease, transform $transition-time ease;
+// Navigation - Modifiée pour correspondre à l'image (cercles au lieu de traits)
+.carousel-navigation {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  z-index: 10;
+  padding: 0 20px;
+}
 
-  &.animate {
-    opacity: 1;
-    transform: translateY(0);
+.nav-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 2px solid $primary-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+
+  &:hover {
+    background-color: $primary-color;
+
+    .arrow {
+      color: white;
+    }
   }
 
-  blockquote {
-    font-size: 1.6rem;
-    font-style: italic;
+  .arrow {
     color: $primary-color;
-    line-height: 1.6;
-    position: relative;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+}
 
-    &::before, &::after {
-      content: '"';
-      font-size: 4rem;
-      color: rgba($primary-color, 0.2);
-      position: absolute;
+// Changé pour des cercles comme dans l'image
+.carousel-indicators {
+  display: flex;
+  gap: 10px;
+
+  span {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba($primary-color, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &.active {
+      background-color: $primary-color;
+      width: 12px;
+      height: 12px;
     }
 
-    &::before {
-      top: -20px;
-      left: -20px;
+    &:hover {
+      background-color: rgba($primary-color, 0.7);
     }
+  }
+}
 
-    &::after {
-      bottom: -40px;
-      right: -20px;
+// Style pour les sections pleine largeur comme dans les captures d'écran
+.full-width-section {
+  display: flex;
+  width: 100%;
+  min-height: 500px;
+
+  &.reverse {
+    flex-direction: row-reverse;
+  }
+
+  .section-image {
+    flex: 1;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
 
-  cite {
-    display: block;
-    margin-top: 1.5rem;
-    font-style: normal;
-    color: $text-color;
+  .section-content {
+    flex: 1;
+    background-color: white;
+    padding: 4rem 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    h2 {
+      color: $primary-color;
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        width: 50px;
+        height: 3px;
+        background-color: $accent-color;
+      }
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: $text-dark;
+      margin-bottom: 2rem;
+    }
+
+    button {
+      align-self: flex-start;
+      background-color: $primary-color;
+      color: $text-light;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: darken($primary-color, 10%);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      }
+    }
   }
 }
 
 // Responsive
 @media (max-width: 992px) {
-  .about-card {
+  .carousel-slide, .full-width-section, .full-width-section.reverse {
     flex-direction: column;
 
-    &.reverse {
-      flex-direction: column;
+    .slide-image, .slide-content, .section-image, .section-content {
+      flex: none;
+    }
 
-      .card-content {
-        padding: 2rem;
+    .slide-image, .section-image {
+      height: 50vh;
+      min-height: 350px;
+    }
+
+    .slide-content, .section-content {
+      padding: 2.5rem;
+
+      h2 {
+        font-size: 2rem;
       }
     }
+  }
 
-    .card-image, .card-content {
-      width: 100%;
-    }
+  .carousel-container {
+    height: auto;
+  }
 
-    .card-image {
-      height: 300px;
-    }
-
-    .card-content {
-      padding: 2rem;
-    }
+  .carousel-slides {
+    height: auto;
+    min-height: 700px;
   }
 }
 
 @media (max-width: 768px) {
-  .about-header h1 {
+  .section-title {
     font-size: 2rem;
+    margin-bottom: 1.5rem;
   }
 
-  .about-cards {
-    gap: 3rem;
-  }
+  .carousel-slide, .full-width-section {
+    .slide-content, .section-content {
+      h2 {
+        font-size: 1.8rem;
+      }
 
-  .about-quote blockquote {
-    font-size: 1.3rem;
-
-    &::before, &::after {
-      font-size: 3rem;
+      p {
+        font-size: 1rem;
+      }
     }
+  }
+
+  .nav-btn {
+    width: 40px;
+    height: 40px;
   }
 }

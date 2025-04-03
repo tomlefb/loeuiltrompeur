@@ -1,57 +1,69 @@
-<section class="about-container">
-  <div class="about-header">
-    <h1>À propos de L'Œil Trompeur</h1>
-    <p class="tagline">Une expérience gastronomique qui défie les perceptions</p>
-  </div>
+<section class="about-section">
+  <h1 class="section-title">À propos de L'Œil Trompeur</h1>
 
-  <div class="about-cards">
-    <div class="about-card">
-      <div class="card-image">
-        <img src="assets/images/restaurant/plat_phare.jpg" alt="Plat signature">
+  <div class="carousel-container">
+    <div class="carousel-slides" #carouselSlides>
+      <!-- Slide 1 -->
+      <div class="carousel-slide" [class.active]="currentSlide === 0">
+        <div class="slide-image">
+          <img src="assets/images/restaurant/plat_phare.jpg" alt="Notre concept">
+        </div>
+        <div class="slide-content">
+          <h2>Le Projet</h2>
+          <p>
+            L'Œil Trompeur, situé au 25 rue St Mélaine au cœur de Rennes, réinvente la gastronomie avec une touche artistique.
+            Chaque plat est une expérience unique, mêlant saveurs inattendues et illusions visuelles.
+          </p>
+          <button class="btn-reservation">Découvrir notre histoire</button>
+        </div>
       </div>
-      <div class="card-content">
-        <h2>Le Projet</h2>
-        <p>
-          L'Œil Trompeur, situé au 25 rue St Mélaine au cœur de Rennes, réinvente la gastronomie avec une touche artistique.
-          Chaque plat est une expérience unique, mêlant saveurs inattendues et illusions visuelles.
-        </p>
-        <a href="/menu" class="btn-discover">Découvrir notre menu</a>
+
+      <!-- Slide 2 -->
+      <div class="carousel-slide" [class.active]="currentSlide === 1">
+        <div class="slide-image">
+          <img src="assets/images/restaurant/1quali.jpeg" alt="Notre philosophie">
+        </div>
+        <div class="slide-content">
+          <h2>Notre Philosophie</h2>
+          <p>
+            Inspiré par l'art du trompe-l'œil, chaque assiette est conçue pour émerveiller. Plats raffinés, surprises visuelles
+            et un cadre chaleureux vous attendent pour une expérience culinaire inoubliable.
+          </p>
+          <button class="btn-reservation">Réserver une table</button>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="carousel-slide" [class.active]="currentSlide === 2">
+        <div class="slide-image">
+          <img src="assets/images/restaurant/restaurant_actuel.jpg" alt="Notre équipe">
+        </div>
+        <div class="slide-content">
+          <h2>L'Équipe</h2>
+          <p>
+            Dirigée par Mathias, chef cuisinier, et Cécilia, chef pâtissière, l'équipe de L'Œil Trompeur s'engage à offrir une
+            expérience culinaire exceptionnelle, accompagnée d'un service impeccable orchestré par Océane, maître d'hôtel.
+          </p>
+          <button class="btn-reservation">Rencontrer l'équipe</button>
+        </div>
       </div>
     </div>
 
-    <div class="about-card reverse">
-      <div class="card-image">
-        <img src="assets/images/restaurant/plat_phare.jpg" alt="Plat phare">
+    <!-- Navigation -->
+    <div class="carousel-navigation">
+      <button class="nav-btn prev-btn" (click)="prevSlide()">
+        <span class="arrow">&#10094;</span>
+      </button>
+      <div class="carousel-indicators">
+        <span
+          *ngFor="let slide of slides; let i = index"
+          [class.active]="currentSlide === i"
+          (click)="goToSlide(i)">
+        </span>
       </div>
-      <div class="card-content">
-        <h2>Notre Philosophie</h2>
-        <p>
-          Inspiré par l'art du trompe-l'œil, chaque assiette est conçue pour émerveiller. Plats raffinés, surprises visuelles
-          et un cadre chaleureux vous attendent pour une expérience culinaire inoubliable.
-        </p>
-        <a href="/reservation" class="btn-discover">Réserver une table</a>
-      </div>
+      <button class="nav-btn next-btn" (click)="nextSlide()">
+        <span class="arrow">&#10095;</span>
+      </button>
     </div>
-
-    <div class="about-card">
-      <div class="card-image">
-        <img src="assets/images/restaurant/plat_phare.jpg" alt="Notre équipe">
-      </div>
-      <div class="card-content">
-        <h2>L'Équipe</h2>
-        <p>
-          Dirigée par Mathias, chef cuisinier, et Cécilia, chef pâtissière, l'équipe de L'Œil Trompeur s'engage à offrir une
-          expérience culinaire exceptionnelle, accompagnée d'un service impeccable orchestré par Océane, maître d'hôtel.
-        </p>
-        <a href="/team" class="btn-discover">Rencontrer l'équipe</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="about-quote">
-    <blockquote>
-      "La gastronomie est l'art de transformer l'ordinaire en extraordinaire, le visible en invisible, et l'attendu en surprise."
-    </blockquote>
-    <cite>— Mathias, Chef Cuisinier</cite>
   </div>
 </section>
