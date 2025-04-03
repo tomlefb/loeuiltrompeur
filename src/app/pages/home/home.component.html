@@ -1,5 +1,48 @@
 <div class="home-container">
+  <!-- Overlay avec dégradé -->
   <div class="overlay"></div>
-  <div class="slogan">Laissez-vous surprendre par l’illusion et le goût.</div>
-  <button class="enter-button" (click)="enterSite()">Entrer</button>
+
+  <!-- Navigation minimale -->
+  <nav class="home-nav">
+    <ul>
+      <li><a routerLink="/menu">MENU</a></li>
+      <li><a routerLink="/about">À PROPOS</a></li>
+      <li><a routerLink="/events">ÉVÉNEMENTS</a></li>
+      <li><a routerLink="/contact">CONTACT</a></li>
+    </ul>
+  </nav>
+
+  <!-- Logo et information d'ouverture -->
+  <div class="top-info">
+    <div class="logo-small">
+      <img src="assets/logos/lgo.png" alt="Logo du restaurant">
+    </div>
+    <div class="opening-hours">
+      OUVERT TOUS LES JOURS<br>
+      DE 12H00 À 23H00
+    </div>
+  </div>
+
+  <!-- Contenu central -->
+  <div class="main-content">
+    <h1 class="restaurant-name">L'Œil Trompeur</h1>
+    <p class="tagline">Savourez l'illusion culinaire</p>
+    <div class="cta-buttons">
+      <button class="btn-primary" (click)="redirectToReservation()">RÉSERVATION</button>
+      <button class="btn-secondary" (click)="redirectToMenu()">DÉCOUVRIR LE MENU</button>
+    </div>
+  </div>
+
+  <!-- Médias sociaux -->
+  <div class="social-links">
+    <a href="#" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="#" aria-label="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="#" aria-label="TripAdvisor">
+      <i class="fab fa-tripadvisor"></i>
+    </a>
+  </div>
 </div>

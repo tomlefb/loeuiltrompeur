@@ -1,16 +1,20 @@
 import { Component } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports:[],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
   constructor(private router: Router) {}
 
-  enterSite() {
-    this.router.navigate(['/menu']); // Redirige vers la page menu, change si nécessaire
+  redirectToReservation() {
+    this.router.navigate(['/reservation']);
+  }
+
+  redirectToMenu() {
+    this.router.navigate(['/menu']);
   }
 }
