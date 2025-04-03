@@ -1,21 +1,52 @@
-<header>
-  <div class="logo">
-    <img src="assets/logos/lgo.png" alt="Logo du restaurant">
+<header [ngClass]="{'scrolled': hasScrolled, 'menu-open': menuOpen}">
+  <div class="header-container">
+    <div class="logo">
+      <a routerLink="/">
+        <img src="assets/logos/lgo.png" alt="Logo du restaurant">
+      </a>
+    </div>
+
+    <nav class="desktop-nav">
+      <ul>
+        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Accueil</a></li>
+        <li><a routerLink="/menu" routerLinkActive="active">Menu</a></li>
+        <li><a routerLink="/about" routerLinkActive="active">À propos</a></li>
+        <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="right-section">
+      <div class="hours">
+        <span>OUVERT TOUS LES JOURS</span>
+        <span>12H00 - 23H00</span>
+      </div>
+
+      <button class="menu-toggle" (click)="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </div>
-  <div class="restaurant-name">
-    L'Œil Trompeur
-  </div>
-  <nav class="navigation">
+
+  <!-- Menu mobile -->
+  <div class="mobile-nav" [class.active]="menuOpen">
     <ul>
-      <li><a routerLink="/">Accueil</a></li>
-      <li><a routerLink="/menu">Menu</a></li>
-      <li><a routerLink="/about">À propos</a></li>
-      <li><a routerLink="/contact">Contact</a></li>
+      <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMenu()">Accueil</a></li>
+      <li><a routerLink="/menu" routerLinkActive="active" (click)="closeMenu()">Menu</a></li>
+      <li><a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">À propos</a></li>
+      <li><a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">Contact</a></li>
     </ul>
-  </nav>
-  <div class="menu-toggle" (click)="toggleMenu()">
-    <span></span>
-    <span></span>
-    <span></span>
+
+    <div class="mobile-hours">
+      <p>OUVERT TOUS LES JOURS</p>
+      <p>12H00 - 23H00</p>
+    </div>
+
+    <div class="social-links">
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+    </div>
   </div>
 </header>

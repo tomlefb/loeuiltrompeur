@@ -1,249 +1,136 @@
-@use '../../../assets/styles/variables.module' as variables;
-
-// Variables
-$primary-color: #687a69;
-$text-dark: #333333;
-$text-light: #ffffff;
-$background-light: #f5f5f5;
-$background-white: #ffffff;
-
 .contact-page {
-  height: calc(100vh - 130px); // Hauteur d'écran - header (70px) - footer (60px)
-  padding: 0 40px;
-  display: flex;
-  flex-direction: column;
-  background-color: $background-light;
-  overflow: hidden;
-}
-
-.page-title {
+  background-color: #f8f7f3;
+  padding: 40px 60px;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 2.2rem;
-  color: $text-dark;
-  text-align: center;
-  margin: 15px 0;
-  font-weight: 300;
-}
+  color: #2c2c2c;
 
-.contact-container {
-  display: flex;
-  height: calc(100% - 60px); // Hauteur restante après le titre
-  gap: 30px;
-  overflow: hidden;
-}
+  .contact-hero {
+    text-align: center;
+    margin-bottom: 40px;
 
-// Formulaire
-.form-section {
-  flex: 1;
-  padding: 20px 30px;
-  background-color: $background-white;
-  border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
+    h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
 
-  h2 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    color: $text-dark;
-    margin: 0 0 20px;
-    font-weight: 400;
+    p {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: #666;
+    }
   }
 
-  .form-row {
+  .contact-container {
     display: flex;
-    gap: 15px;
-    margin-bottom: 12px;
+    gap: 50px;
+
+    @media (max-width: 992px) {
+      flex-direction: column;
+    }
+  }
+
+  .form-section {
+    flex: 1;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 20px;
+
+      @media (max-width: 768px) {
+        flex-direction: column;
+      }
+    }
 
     .form-group {
       flex: 1;
-    }
-  }
+      margin-bottom: 20px;
 
-  .form-group {
-    margin-bottom: 12px;
+      label {
+        display: block;
+        font-size: 0.95rem;
+        margin-bottom: 6px;
+      }
 
-    label {
-      display: block;
-      margin-bottom: 4px;
-      font-weight: 500;
-      color: #555;
-      font-size: 0.9rem;
-    }
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px 14px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-family: 'Inter', sans-serif;
 
-    input, textarea {
-      width: 100%;
-      padding: 8px 10px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-size: 0.95rem;
-
-      &:focus {
-        border-color: $primary-color;
-        outline: none;
+        &:focus {
+          border-color: #687a69;
+          outline: none;
+        }
       }
     }
 
-    textarea {
-      resize: vertical;
+    .btn-submit {
+      background-color: #687a69;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s ease;
+
+      &:hover {
+        background-color: darken(#687a69, 10%);
+      }
     }
   }
 
-  .btn-submit {
-    margin-top: auto; // Pousse le bouton vers le bas
-    align-self: flex-start;
-    background-color: $primary-color;
-    color: $text-light;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s;
-    font-size: 0.95rem;
-
-    &:hover {
-      background-color: darken($primary-color, 10%);
-    }
-  }
-}
-
-// Carte et infos
-.map-info-section {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-.map-container {
-  flex: 1;
-  position: relative;
-
-  iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-  }
-}
-
-// Nouveau design pour la bande d'information
-.info-strip {
-  height: 110px; // Hauteur fixe réduite
-  background: linear-gradient(to right, darken($primary-color, 5%), $primary-color, darken($primary-color, 3%));
-  display: flex;
-  justify-content: space-between;
-  padding: 0;
-  color: white;
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.info-column {
-  flex: 1;
-  padding: 15px 20px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  &:not(:last-child)::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 20%;
-    height: 60%;
-    width: 1px;
-    background-color: rgba(255, 255, 255, 0.3);
-  }
-
-  h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    font-weight: 400;
-    margin: 0 0 8px;
-    letter-spacing: 0.5px;
-  }
-
-  p {
-    margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.5;
-  }
-
-  &.hours {
-    flex: 1.4; // Un peu plus large pour les horaires
-  }
-}
-
-// Grid pour les horaires
-.hours-grid {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 4px 10px;
-  font-size: 0.85rem;
-
-  .day {
-    font-weight: 500;
-    white-space: nowrap;
-  }
-
-  .time {
-    text-align: right;
-  }
-}
-
-// Responsive
-@media (max-width: 1200px) {
-  .contact-container {
+  .info-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
-  }
 
-  .info-strip {
-    height: auto;
-    padding: 10px 0;
-  }
-}
+    .map-wrapper {
+      border-radius: 12px;
+      overflow: hidden;
+      height: 250px;
 
-@media (max-width: 992px) {
-  .contact-page {
-    height: auto;
-    padding: 0 20px 20px;
-  }
-
-  .contact-container {
-    flex-direction: column;
-    height: auto;
-  }
-
-  .map-info-section {
-    height: 500px;
-  }
-
-  .map-container {
-    height: 350px;
-  }
-}
-
-@media (max-width: 768px) {
-  .info-strip {
-    flex-direction: column;
-    padding: 15px;
-
-    .info-column {
-      padding: 10px 0;
-
-      &:not(:last-child)::after {
-        display: none;
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
       }
     }
-  }
 
-  .form-row {
-    flex-direction: column;
-    gap: 0;
+    .details {
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+
+      > div {
+        margin-bottom: 20px;
+
+        h3 {
+          margin: 0 0 8px;
+          font-size: 1.2rem;
+        }
+
+        p {
+          margin: 0;
+          font-size: 1rem;
+          line-height: 1.5;
+          font-family: 'Inter', sans-serif;
+        }
+      }
+    }
   }
 }

@@ -14,6 +14,15 @@ html, body {
   overflow-y: auto; /* Active le défilement global */
 }
 
+
+// Option 1 : à mettre globalement dans styles.scss
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
 body {
   margin: 0;
   font-weight: 300; /* Texte courant plus léger */
